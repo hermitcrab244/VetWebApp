@@ -1,0 +1,24 @@
+<div>
+  <header>
+    <div class="nav-bar">
+      <h1>Woof Wellness Center</h1>
+
+      <nav>
+        <a [routerLink]="['/home']" routerLinkActive="active-link">Home</a>
+        <a [routerLink]="['/about-us']" routerLinkActive="active-link"
+          >About Us</a
+        >
+        <a [routerLink]="['/contact-us']" routerLinkActive="active-link"
+          >Contact Us</a
+        >
+        <a [routerLink]="['/our-services']" routerLinkActive="active-link"
+          >Our Services</a
+        >
+      </nav>
+      <span id="spacer"></span>
+      <button mat-icon-button id="btn" (click)="settings()">
+        <mat-icon id="icon">settings</mat-icon>
+      </button>
+    </div>
+  </header>
+</div>
