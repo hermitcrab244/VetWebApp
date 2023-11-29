@@ -1,45 +1,49 @@
-<div>
-  <h2>Our Services</h2>
-</div>
-
-<div>
+<div class="service-intro">
   At Woof Wellness Center, we offer a wide range of services to keep your pets
   healthy and happy. Whether you have a dog, cat, suburban pets or farm animals,
   we're here to provide care.
 </div>
 
-<div>
-  <ul>
+<div class="service-list">
+  <div class="service-category" id="grid-background">
     <p>Wellness Care:</p>
-    <li>Annual check-ups</li>
-    <li>Vaccinations</li>
-    <li>Preventative Care</li>
-    <li>Microchipping</li>
-  </ul>
+    <ul>
+      <li>Annual check-ups</li>
+      <li>Vaccinations</li>
+      <li>Preventative Care</li>
+      <li>Microchipping</li>
+    </ul>
+  </div>
 
-  <ul>
+  <div class="service-category">
     <p>Medical Services:</p>
-    <li>Diagnosis and treatment of illnesses</li>
-    <li>Dental care</li>
-    <li>Surgery</li>
-  </ul>
+    <ul>
+      <li>Diagnosis and treatment of illnesses</li>
+      <li>Dental care</li>
+      <li>Surgery</li>
+    </ul>
+  </div>
 
-  <ul>
+  <div class="service-category">
     <p>Specialized Care:</p>
-    <li>Dog specialist services</li>
-    <li>Allergy testing</li>
-    <li>Behavioral consultations</li>
-  </ul>
+    <ul>
+      <li>Dog specialist services</li>
+      <li>Allergy testing</li>
+      <li>Behavioral consultations</li>
+    </ul>
+  </div>
 
-  <ul>
+  <div class="service-category" id="grid-background">
     <p>Emergency Services:</p>
-    <li>24/7 emergency care</li>
-    <li>Critical care and hospitalization</li>
-    <li>Urgent surgeries</li>
-  </ul>
+    <ul>
+      <li>24/7 emergency care</li>
+      <li>Critical care and hospitalization</li>
+      <li>Urgent surgeries</li>
+    </ul>
+  </div>
 </div>
 
-<div>
+<div class="service-contact">
   <p>
     For further information about our services and pricing please
     <a [routerLink]="['/contact-us']" routerLinkActive="active-link"

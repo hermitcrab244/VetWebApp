@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.intro,
+.our-story,
+.our-vets,
+.community-info {
+  padding: 20px;
+}
+
+.intro {
+  background-color: #f7f7f7;
+  text-align: center;
+}
+
+.intro p {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.our-story p {
+  margin-bottom: 15px;
+  line-height: 1.5;
+  font-weight: bold;
+}
+
+.our-vets {
+  background-color: #f7f7f7;
+}
+
+.our-vets div {
+  margin-bottom: 30px;
+}
+
+.our-vets p {
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.community-info p,
+.community-info li {
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.community-info ul {
+  list-style-type: none;
+  padding: 0;
+}

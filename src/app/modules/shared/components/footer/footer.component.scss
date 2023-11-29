@@ -1,0 +1,39 @@
+#footer-img {
+  text-align: center;
+}
+
+.info-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  background-color: #77c3df;
+}
+
+.container-info {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+#more-info,
+#contact-info,
+#visit-info {
+  flex: 1;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+
+  p {
+    margin-bottom: 1px;
+  }
+
+  mat-icon {
+    font-size: 20px;
+  }
+}
+
+#footer {
+  width: 100%;
+  margin-top: 20px;
+}
