@@ -1,11 +1,11 @@
 #page {
-  font-size: 16px;
+  font-size: 100%;
 
   &.large {
-    font-size: 20px;
+    font-size: 125%;
   }
 
   &.extraLarge {
-    font-size: 24px;
+    font-size: 150%;
   }
 }
