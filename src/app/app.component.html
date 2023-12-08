@@ -1,4 +1,11 @@
-<div id="page">
+<div
+  id="page"
+  [ngClass]="{
+    default: sizeSelector === 'default',
+    large: sizeSelector === 'large',
+    extraLarge: sizeSelector === 'extraLarge'
+  }"
+>
   <app-nav-header></app-nav-header>
   <router-outlet></router-outlet>
   <app-footer></app-footer>

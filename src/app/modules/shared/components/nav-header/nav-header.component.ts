@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SettingsService } from 'src/app/core/services/gameService/settings.service';
 
 @Component({
   selector: 'app-nav-header',
@@ -6,7 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-header.component.scss'],
 })
 export class NavHeaderComponent {
-  settings() {
-    console.log('Button works :)');
+  fontSizeSelect!: string;
+
+  constructor(private settingsService: SettingsService) {}
+
+  fontSizeSettings(fontSize: string) {
+    this.fontSizeSelect = fontSize;
+    this.settingsService.setFontSize(this.fontSizeSelect);
   }
 }

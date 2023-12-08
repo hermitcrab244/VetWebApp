@@ -26,7 +26,6 @@ a {
   text-decoration: none;
   margin: 0 10px;
   font-size: 16px;
-  transition: font-size 0.2s ease-in-out;
 }
 
 a.active-link {
@@ -52,7 +51,7 @@ a.active-link {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: font-size 0.2s ease-in-out;
+
   padding: 0;
 }
 
@@ -61,14 +60,8 @@ a.active-link {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: font-size 0.2s ease-in-out;
 }
 
-#btn:hover {
-  width: 40px;
-  height: 40px;
-}
-
-#btn:hover #icon {
-  font-size: 30px;
+#btn-space {
+  margin-left: 20px;
 }

@@ -16,9 +16,35 @@
         >
       </nav>
       <span id="spacer"></span>
-      <button mat-icon-button id="btn" (click)="settings()">
+      <button mat-icon-button id="btn">
+        <mat-icon id="icon">person</mat-icon>
+      </button>
+      <span id="btn-space"></span>
+      <button mat-icon-button id="btn" [matMenuTriggerFor]="settings">
         <mat-icon id="icon">settings</mat-icon>
       </button>
+      <mat-menu #settings="matMenu">
+        <p>Choose font size:</p>
+        <mat-button-toggle-group name="fontSettings">
+          <mat-button-toggle
+            (click)="fontSizeSettings('default')"
+            matTooltip="Normal"
+            >N</mat-button-toggle
+          >
+          <mat-button-toggle
+            (click)="fontSizeSettings('large')"
+            matTooltip="Large"
+            >L</mat-button-toggle
+          >
+          <mat-button-toggle
+            (click)="fontSizeSettings('extraLarge')"
+            matTooltip="Extra Large"
+            >XL</mat-button-toggle
+          >
+        </mat-button-toggle-group>
+      </mat-menu>
+
+      <span id="btn-space"></span>
     </div>
   </header>
 </div>

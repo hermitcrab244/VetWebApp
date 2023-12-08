@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { OurServicesComponent } from './components/our-services/our-services.component';
 import { MaterialModule } from '../shared/material.module';
 import { RouterModule } from '@angular/router';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { RouterModule } from '@angular/router';
     HomeComponent,
     OurServicesComponent,
   ],
-  imports: [CommonModule, MaterialModule, RouterModule],
+  imports: [CommonModule, MaterialModule, RouterModule, GoogleMapsModule],
   exports: [],
 })
 export class MainModule {}

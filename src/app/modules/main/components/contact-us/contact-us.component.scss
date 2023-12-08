@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+}
+
+.contact-container,
+.visit-container {
+  flex: 1;
+  padding: 20px;
+}
+
+.contact-container,
+.visit-container {
+  margin-top: 20px;
+}
+
+.contact-container p,
+.visit-container p,
+.contact-container b {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+#title {
+  text-align: center;
+}
+
+#map {
+  margin-left: 5%;
+}
+
+.visit-container {
+  background-color: #f7f7f7;
+}
+
+#container {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+#hours {
+  margin-top: 50px;
+}
