@@ -18,9 +18,17 @@
 
       <span id="spacer"></span>
 
-      <button mat-icon-button id="btn">
+      <button mat-icon-button id="btn" [matMenuTriggerFor]="login">
         <mat-icon id="icon">person</mat-icon>
       </button>
+
+      <div>
+        <mat-menu #login="matMenu">
+          <div class="container">
+            <app-login></app-login>
+          </div>
+        </mat-menu>
+      </div>
 
       <span id="btn-space"></span>
 
@@ -30,7 +38,7 @@
 
       <div>
         <mat-menu #settings="matMenu">
-          <div class="settings-container">
+          <div class="container">
             <p>Choose font size:</p>
             <mat-button-toggle-group name="fontSettings" id="buttonGroup">
               <mat-button-toggle

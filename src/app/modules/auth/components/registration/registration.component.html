@@ -1,0 +1,112 @@
+<div id="stepper-container">
+  <mat-stepper labelPosition="bottom" #stepper>
+    <mat-step label="Personal Details">
+      <div id="personal-details-form">
+        <form>
+          <div class="form-field">
+            <mat-label for="first-name-field">First Name</mat-label>
+            <mat-form-field id="first-name-field">
+              <input matInput type="text" required />
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+            <mat-label for="last-name-field">Last Name</mat-label>
+            <mat-form-field id="last-name-field">
+              <input matInput type="text" required />
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+            <mat-label for="contact-field">Contact Number</mat-label>
+            <mat-form-field id="contact-field">
+              <input matInput type="text" required />
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+            <mat-label for="email-field">Email</mat-label>
+            <mat-form-field id="email-field">
+              <input matInput type="email" required />
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+            <mat-label for="password-field">Password</mat-label>
+            <mat-form-field id="password-field">
+              <input matInput type="P" required />
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+            <mat-label for="suburb-field">Suburb</mat-label>
+            <mat-form-field id="suburb-field">
+              <input matInput type="text" required />
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+            <mat-label for="postcode-field">Postcode</mat-label>
+            <mat-form-field id="postcode-field">
+              <input matInput type="text" required />
+            </mat-form-field>
+          </div>
+        </form>
+      </div>
+
+      <div id="nav-button">
+        <button mat-raised-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="Pet Details">
+      <div id="pet-details-form">
+        <form>
+          <div class="form-field">
+            <mat-label for="pet-name-field">Pet Name</mat-label>
+            <mat-form-field id="pet-name-field">
+              <input matInput type="text" required />
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+            <mat-label for="pet-breed-field">Pet Breed</mat-label>
+            <mat-form-field id="pet-breed-field">
+              <input matInput type="text" required />
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+            <mat-label for="pet-age-field">Pet Age</mat-label>
+            <mat-form-field id="pet-age-field">
+              <input matInput type="text" required />
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+            <mat-label for="pet-gender-field">Pet Gender</mat-label>
+            <mat-form-field id="pet-gender-field">
+              <mat-select required>
+                <mat-option>Male</mat-option>
+                <mat-option>Female</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </form>
+      </div>
+
+      <div id="nav-button">
+        <button mat-raised-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="Complete">
+      <div id="registration-complete">
+        <img src="../../../../../assets/images/tick.png" />
+        <p>Registration Complete</p>
+        <div id="nav-button">
+          <button mat-raised-button (click)="returnHome()">Home</button>
+        </div>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>

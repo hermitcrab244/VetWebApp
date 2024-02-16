@@ -1,0 +1,26 @@
+#login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-label {
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+}
+
+button {
+    width: 60%;
+
+}

@@ -1,0 +1,23 @@
+<div id="login-form" (click)="stopPropagation($event)">
+  <div class="form-field">
+    <mat-label for="email-field">Email</mat-label>
+    <mat-form-field id="email-field">
+      <input matInput type="email" required />
+    </mat-form-field>
+  </div>
+
+  <div class="form-field">
+    <mat-label for="password-field">Password</mat-label>
+    <mat-form-field id="password-field">
+      <input matInput type="password" required />
+    </mat-form-field>
+  </div>
+
+  <div class="form-field">
+    <p>Dont have an account? <a routerLink="/registration">Click here</a></p>
+  </div>
+
+  <div class="form-field">
+    <button mat-raised-button>Login</button>
+  </div>
+</div>
