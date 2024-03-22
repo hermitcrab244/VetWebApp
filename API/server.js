@@ -4,10 +4,10 @@ const mysql = require("mysql");
 const cors = require("cors");
 
 const db = mysql.createConnection({
-    host: "", //IP
-    user: "root",
-    password: "",
-    database: "",
+  host: "127.0.0.1",
+  user: "root",
+  password: "1234567890",
+  database: "ictprg438database",
   });
 
   db.connect((err) => {

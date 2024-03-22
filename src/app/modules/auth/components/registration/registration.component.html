@@ -55,6 +55,7 @@
       </div>
 
       <div id="nav-button">
+        <button mat-raised-button (click)="returnHome()">Cancel</button>
         <button mat-raised-button matStepperNext>Next</button>
       </div>
     </mat-step>
@@ -97,6 +98,15 @@
       <div id="nav-button">
         <button mat-raised-button matStepperPrevious>Back</button>
         <button mat-raised-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="Review & Submit">
+      <div id="registration-submit">
+        <p>User cred here</p>
+        <p>Pet cred here</p>
+        <div id="nav-button">
+          <button mat-raised-button matStepperNext>Submit</button>
+        </div>
       </div>
     </mat-step>
     <mat-step label="Complete">
