@@ -12,6 +12,8 @@ import { APIService } from 'src/app/core/services/backendService/api.service';
 export class RegistrationComponent implements OnInit {
   registrationForm!: FormGroup
   initalPetForm!: FormGroup
+  petImageForm!: FormGroup
+  imageUrl: string | ArrayBuffer | null = null;
 
   constructor(
     private router: Router, private formBuilder: FormBuilder, private api: APIService,
@@ -34,6 +36,10 @@ export class RegistrationComponent implements OnInit {
       petAge: ['', Validators.required],
       petGender: ['', Validators.required]
     })
+
+    this.petImageForm = this.formBuilder.group({
+      petImage: ['']
+    })
   }
 
    registerUser() {
@@ -49,6 +55,19 @@ export class RegistrationComponent implements OnInit {
       const petBreed = this.initalPetForm.get('petBreed')!.value;
       const petAge = this.initalPetForm.get('petAge')!.value;
       const petGender = this.initalPetForm.get('petGender')!.value;
+      const petImage = this.petImageForm.get('petImage')!.value;
+    }
+   }
+
+   onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if(file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imageUrl = e.target.result;
+      };
+      reader.readAsDataURL(file);
+      this.petImageForm.patchValue({petImage: file})
     }
    }
 

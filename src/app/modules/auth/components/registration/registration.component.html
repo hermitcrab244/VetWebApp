@@ -100,10 +100,59 @@
         <button mat-raised-button matStepperNext>Next</button>
       </div>
     </mat-step>
+    <mat-step label="Pet Image Upload">
+      <div id="pet-image-upload">
+        <form>
+          <div class="pet-image-field">
+            <mat-label for="pet-image-field"
+              >Upload image of your pet</mat-label
+            >
+            <input
+              type="file"
+              (change)="onFileSelected($event)"
+              accept="image/*"
+            />
+          </div>
+          <img *ngIf="imageUrl" [src]="imageUrl" alt="Uploaded Image" />
+        </form>
+      </div>
+      <div id="nav-button">
+        <button mat-raised-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
     <mat-step label="Review & Submit">
       <div id="registration-submit">
-        <p>User cred here</p>
-        <p>Pet cred here</p>
+        <div id="personal-details-view">
+          <b>Personal Details:</b>
+          <div id="personal">
+            <p>First Name: {{ registrationForm.get("firstName")?.value }}</p>
+            <p>Last Name: {{ registrationForm.get("lastName")?.value }}</p>
+            <p>
+              Contact Number:
+              {{ registrationForm.get("constactNumber")?.value }}
+            </p>
+            <p>Email: {{ registrationForm.get("email")?.value }}</p>
+          </div>
+          <div id="address">
+            <p>Suburb: {{ registrationForm.get("suburb")?.value }}</p>
+            <p>Postcode: {{ registrationForm.get("postcode")?.value }}</p>
+          </div>
+        </div>
+        <!---->
+        <div id="pet-details-view">
+          <b>Pet Details:</b>
+          <div id="pet">
+            <p>Pet Name: {{ registrationForm.get("petName")?.value }}</p>
+            <p>Pet Breed: {{ registrationForm.get("petBreed")?.value }}</p>
+            <p>Pet Age: {{ registrationForm.get("petAge")?.value }}</p>
+            <p>Pet Gender: {{ registrationForm.get("petGender")?.value }}</p>
+          </div>
+          <div id="pet-image">
+            <p>Pet Image:</p>
+            <img *ngIf="imageUrl" [src]="imageUrl" alt="Uploaded Pet Image" />
+          </div>
+        </div>
         <div id="nav-button">
           <button mat-raised-button matStepperNext>Submit</button>
         </div>
