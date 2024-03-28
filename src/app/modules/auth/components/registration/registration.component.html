@@ -2,53 +2,95 @@
   <mat-stepper labelPosition="bottom" #stepper>
     <mat-step label="Personal Details">
       <div id="personal-details-form">
-        <form>
+        <form [formGroup]="registrationForm">
           <div class="form-field">
             <mat-label for="first-name-field">First Name</mat-label>
             <mat-form-field id="first-name-field">
-              <input matInput type="text" required />
+              <input
+                matInput
+                placeholder="First Name *"
+                type="text"
+                formControlName="firstName"
+                required
+              />
             </mat-form-field>
           </div>
 
           <div class="form-field">
             <mat-label for="last-name-field">Last Name</mat-label>
             <mat-form-field id="last-name-field">
-              <input matInput type="text" required />
+              <input
+                matInput
+                placeholder="Last Name *"
+                type="text"
+                formControlName="lastName"
+                required
+              />
             </mat-form-field>
           </div>
 
           <div class="form-field">
             <mat-label for="contact-field">Contact Number</mat-label>
             <mat-form-field id="contact-field">
-              <input matInput type="text" required />
+              <input
+                matInput
+                placeholder="Contact Number *"
+                type="text"
+                formControlName="contactNumber"
+                required
+              />
             </mat-form-field>
           </div>
 
           <div class="form-field">
             <mat-label for="email-field">Email</mat-label>
             <mat-form-field id="email-field">
-              <input matInput type="email" required />
+              <input
+                matInput
+                placeholder="Email *"
+                type="email"
+                formControlName="email"
+                required
+              />
             </mat-form-field>
           </div>
 
           <div class="form-field">
             <mat-label for="password-field">Password</mat-label>
             <mat-form-field id="password-field">
-              <input matInput type="P" required />
+              <input
+                matInput
+                placeholder="Password *"
+                type="password"
+                formControlName="password"
+                required
+              />
             </mat-form-field>
           </div>
 
           <div class="form-field">
             <mat-label for="suburb-field">Suburb</mat-label>
             <mat-form-field id="suburb-field">
-              <input matInput type="text" required />
+              <input
+                matInput
+                placeholder="Suburb *"
+                type="text"
+                formControlName="suburb"
+                required
+              />
             </mat-form-field>
           </div>
 
           <div class="form-field">
             <mat-label for="postcode-field">Postcode</mat-label>
             <mat-form-field id="postcode-field">
-              <input matInput type="text" required />
+              <input
+                matInput
+                placeholder="Postcode *"
+                type="text"
+                formControlName="postcode"
+                required
+              />
             </mat-form-field>
           </div>
         </form>
@@ -56,39 +98,83 @@
 
       <div id="nav-button">
         <button mat-raised-button (click)="returnHome()">Cancel</button>
-        <button mat-raised-button matStepperNext>Next</button>
+        <button
+          mat-raised-button
+          [disabled]="!registrationForm.valid"
+          matStepperNext
+          (click)="registerCustomer()"
+        >
+          Next
+        </button>
       </div>
     </mat-step>
+
     <mat-step label="Pet Details">
       <div id="pet-details-form">
-        <form>
+        <form [formGroup]="initalPetForm">
+          <div class="form-field">
+            <mat-label for="pet-type-field">Pet Type</mat-label>
+            <mat-form-field id="pet-type-field">
+              <mat-select
+                placeholder="Pet Type *"
+                required
+                formControlName="petType"
+              >
+                <mat-option value="dog">Dog</mat-option>
+                <mat-option value="cat">Cat</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
           <div class="form-field">
             <mat-label for="pet-name-field">Pet Name</mat-label>
             <mat-form-field id="pet-name-field">
-              <input matInput type="text" required />
+              <input
+                matInput
+                placeholder="Pet Name *"
+                type="text"
+                formControlName="petName"
+                required
+              />
             </mat-form-field>
           </div>
 
           <div class="form-field">
             <mat-label for="pet-breed-field">Pet Breed</mat-label>
             <mat-form-field id="pet-breed-field">
-              <input matInput type="text" required />
+              <input
+                matInput
+                placeholder="Pet Breed *"
+                type="text"
+                formControlName="petBreed"
+                required
+              />
             </mat-form-field>
           </div>
 
           <div class="form-field">
             <mat-label for="pet-age-field">Pet Age</mat-label>
             <mat-form-field id="pet-age-field">
-              <input matInput type="text" required />
+              <input
+                matInput
+                placeholder="Pet Age *"
+                type="text"
+                formControlName="petAge"
+                required
+              />
             </mat-form-field>
           </div>
 
           <div class="form-field">
             <mat-label for="pet-gender-field">Pet Gender</mat-label>
             <mat-form-field id="pet-gender-field">
-              <mat-select required>
-                <mat-option>Male</mat-option>
-                <mat-option>Female</mat-option>
+              <mat-select
+                placeholder="Pet Gender *"
+                required
+                formControlName="petGender"
+              >
+                <mat-option value="M">Male</mat-option>
+                <mat-option value="F">Female</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
@@ -97,20 +183,30 @@
 
       <div id="nav-button">
         <button mat-raised-button matStepperPrevious>Back</button>
-        <button mat-raised-button matStepperNext>Next</button>
+        <button
+          mat-raised-button
+          [disabled]="!initalPetForm.valid"
+          (click)="registerPet()"
+          matStepperNext
+        >
+          Next
+        </button>
       </div>
     </mat-step>
-    <mat-step label="Pet Image Upload">
+
+    <!--
+      <mat-step label="Pet Image Upload">
       <div id="pet-image-upload">
-        <form>
+        <form [formGroup]="petImageForm">
           <div class="pet-image-field">
             <mat-label for="pet-image-field"
-              >Upload image of your pet</mat-label
+              >Upload image of your pet (Not required)</mat-label
             >
             <input
               type="file"
               (change)="onFileSelected($event)"
               accept="image/*"
+              formControlName="petImage"
             />
           </div>
           <img *ngIf="imageUrl" [src]="imageUrl" alt="Uploaded Image" />
@@ -118,46 +214,13 @@
       </div>
       <div id="nav-button">
         <button mat-raised-button matStepperPrevious>Back</button>
-        <button mat-raised-button matStepperNext>Next</button>
+        <button mat-raised-button matStepperNext (click)="uploadPetImage()">
+          Next
+        </button>
       </div>
     </mat-step>
-    <mat-step label="Review & Submit">
-      <div id="registration-submit">
-        <div id="personal-details-view">
-          <b>Personal Details:</b>
-          <div id="personal">
-            <p>First Name: {{ registrationForm.get("firstName")?.value }}</p>
-            <p>Last Name: {{ registrationForm.get("lastName")?.value }}</p>
-            <p>
-              Contact Number:
-              {{ registrationForm.get("constactNumber")?.value }}
-            </p>
-            <p>Email: {{ registrationForm.get("email")?.value }}</p>
-          </div>
-          <div id="address">
-            <p>Suburb: {{ registrationForm.get("suburb")?.value }}</p>
-            <p>Postcode: {{ registrationForm.get("postcode")?.value }}</p>
-          </div>
-        </div>
-        <!---->
-        <div id="pet-details-view">
-          <b>Pet Details:</b>
-          <div id="pet">
-            <p>Pet Name: {{ registrationForm.get("petName")?.value }}</p>
-            <p>Pet Breed: {{ registrationForm.get("petBreed")?.value }}</p>
-            <p>Pet Age: {{ registrationForm.get("petAge")?.value }}</p>
-            <p>Pet Gender: {{ registrationForm.get("petGender")?.value }}</p>
-          </div>
-          <div id="pet-image">
-            <p>Pet Image:</p>
-            <img *ngIf="imageUrl" [src]="imageUrl" alt="Uploaded Pet Image" />
-          </div>
-        </div>
-        <div id="nav-button">
-          <button mat-raised-button matStepperNext>Submit</button>
-        </div>
-      </div>
-    </mat-step>
+  -->
+
     <mat-step label="Complete">
       <div id="registration-complete">
         <img src="../../../../../assets/images/tick.png" />

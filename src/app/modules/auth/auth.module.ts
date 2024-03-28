@@ -4,6 +4,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { LoginComponent } from './components/login/login.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../shared/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -11,7 +12,7 @@ import { MaterialModule } from '../shared/material.module';
 @NgModule({
   declarations: [RegistrationComponent, LoginComponent],
   imports: [
-    CommonModule, RouterModule, MaterialModule
+    CommonModule, RouterModule, MaterialModule, ReactiveFormsModule
   ],
   exports: [LoginComponent]
 })
