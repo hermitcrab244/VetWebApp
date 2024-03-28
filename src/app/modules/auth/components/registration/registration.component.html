@@ -194,13 +194,12 @@
       </div>
     </mat-step>
 
-    <!--
-      <mat-step label="Pet Image Upload">
+    <mat-step label="Pet Image Upload">
       <div id="pet-image-upload">
         <form [formGroup]="petImageForm">
           <div class="pet-image-field">
             <mat-label for="pet-image-field"
-              >Upload image of your pet (Not required)</mat-label
+              >Upload image of your pet (optional)</mat-label
             >
             <input
               type="file"
@@ -214,12 +213,9 @@
       </div>
       <div id="nav-button">
         <button mat-raised-button matStepperPrevious>Back</button>
-        <button mat-raised-button matStepperNext (click)="uploadPetImage()">
-          Next
-        </button>
+        <button mat-raised-button matStepperNext>Next</button>
       </div>
     </mat-step>
-  -->
 
     <mat-step label="Complete">
       <div id="registration-complete">

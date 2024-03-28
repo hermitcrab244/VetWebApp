@@ -30,8 +30,8 @@ app.post("/registration-customer", (req, res) => {
     password,
   } = req.body;
 
-  const existingUSerCheck = "SELECT * FROM customers WHERE email = ?";
-  db.query(existingUSerCheck, [email], (err, results) => {
+  const existingUserCheck = "SELECT * FROM customers WHERE email = ?";
+  db.query(existingUserCheck, [email], (err, results) => {
     if (err) {
       res.status(500).json({ message: "Validation Error" });
     } else {
@@ -57,7 +57,15 @@ app.post("/registration-customer", (req, res) => {
               const customerID = result.insertId;
               res.status(200).json({
                 message: "Registration successful",
-                customerID: customerID,
+                data: {
+                  customer_id: customerID,
+                  firstName,
+                  lastName,
+                  contactNumber,
+                  email,
+                  suburb,
+                  postcode,
+                },
               });
             }
           }
@@ -72,15 +80,26 @@ app.post("/registration-pet", (req, res) => {
     req.body;
 
   const insertQuery = `INSERT INTO pets (customer_id, pet_type, pet_name, pet_breed, pet_age, pet_sex) VALUES (?, ?, ?, ?, ?, ?)`;
-
   db.query(
     insertQuery,
     [customerID, petType, petName, petBreed, petAge, petGender],
     (err, result) => {
       if (err) {
-        res.status(500).json({ message: "Registration Error" });
+        res.status(500).json({ message: "Registration Failed" });
       } else {
-        res.status(200).json({ message: "Registration Successful" });
+        const petID = result.insertId;
+        res.status(200).json({
+          message: "Registration successful",
+          data: {
+            pet_id: petID,
+            customerID,
+            petType,
+            petName,
+            petBreed,
+            petAge,
+            petGender,
+          },
+        });
       }
     }
   );

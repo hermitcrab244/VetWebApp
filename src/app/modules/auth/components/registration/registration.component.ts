@@ -41,9 +41,9 @@ export class RegistrationComponent implements OnInit {
       petGender: [null, Validators.required],
     });
 
-    // this.petImageForm = this.formBuilder.group({
-    //   petImage: [''],
-    // });
+    this.petImageForm = this.formBuilder.group({
+      petImage: [''],
+    });
   }
 
   registerCustomer() {
@@ -69,8 +69,8 @@ export class RegistrationComponent implements OnInit {
         .subscribe(
           (response) => {
             console.log(response.message);
-            this.customerID = response.customerID;
-            console.log('Customer ID: ', this.customerID);
+            console.log(response.data);
+            this.customerID = response.data.customer_id;
           },
           (error) => {
             console.log('Error: ', error);
@@ -99,27 +99,26 @@ export class RegistrationComponent implements OnInit {
         .subscribe(
           (response) => {
             console.log(response.message);
+            console.log(response.data);
           },
           (error) => {
-            console.log('Error: ', error);
+            console.log('Error:', error);
           }
         );
     }
   }
 
-  // uploadPetImage() {}
-
-  // onFileSelected(event: any) {
-  //   const file: File = event.target.files[0];
-  //   if (file) {
-  //     this.petImageFile = file;
-  //     const reader = new FileReader();
-  //     reader.onload = (e: any) => {
-  //       this.imageUrl = e.target.result;
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // }
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.petImageFile = file;
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imageUrl = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 
   returnHome() {
     this.router.navigate(['/home']);
