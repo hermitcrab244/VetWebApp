@@ -9,7 +9,7 @@
 .mat-step-content {
 
     width: 60%;
-    margin: 0 auto; /* Center the form within the container */
+    margin: 0 auto;
 }
 
 .form-field {
@@ -34,7 +34,14 @@ mat-select {
 #nav-button {
     margin-top: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    width: 60%;
+    margin: 0 auto;
+}
+
+#nav-button button {
+    flex: 1;
+    margin: 0 10px;
 }
 
 #registration-complete {

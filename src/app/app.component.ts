@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { SettingsService } from './core/services/gameService/settings.service';
+import { SettingsService } from './core/services/dataService/settings.service';
 
 @Component({
   selector: 'app-root',

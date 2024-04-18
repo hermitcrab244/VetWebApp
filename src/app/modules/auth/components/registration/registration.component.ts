@@ -11,9 +11,6 @@ import { APIService } from 'src/app/core/services/backendService/api.service';
 export class RegistrationComponent implements OnInit {
   registrationForm!: FormGroup;
   initalPetForm!: FormGroup;
-  petImageForm!: FormGroup;
-  imageUrl: string | ArrayBuffer | null = null;
-  petImageFile: File | null = null;
   customerID!: string;
 
   constructor(
@@ -39,10 +36,6 @@ export class RegistrationComponent implements OnInit {
       petBreed: ['', Validators.required],
       petAge: ['', Validators.required],
       petGender: [null, Validators.required],
-    });
-
-    this.petImageForm = this.formBuilder.group({
-      petImage: [''],
     });
   }
 
@@ -87,6 +80,14 @@ export class RegistrationComponent implements OnInit {
       const petAge = this.initalPetForm.get('petAge')!.value;
       const petGender = this.initalPetForm.get('petGender')!.value;
 
+      const formData = new FormData();
+      formData.append('customerID', this.customerID);
+      formData.append('petType', petType);
+      formData.append('petName', petName);
+      formData.append('petBreed', petBreed);
+      formData.append('petAge', petAge);
+      formData.append('petGender', petGender);
+
       this.api
         .registerPet(
           this.customerID,
@@ -105,18 +106,6 @@ export class RegistrationComponent implements OnInit {
             console.log('Error:', error);
           }
         );
-    }
-  }
-
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    if (file) {
-      this.petImageFile = file;
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.imageUrl = e.target.result;
-      };
-      reader.readAsDataURL(file);
     }
   }
 

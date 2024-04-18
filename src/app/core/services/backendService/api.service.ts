@@ -49,4 +49,14 @@ export class APIService {
     };
     return this.http.post(`${this.apiURL}/registration-pet`, body);
   }
+
+  customerLogin(email: string, password: string): Observable<any> {
+    const body = { email, password };
+    return this.http.post(`${this.apiURL}/login`, body);
+  }
+
+  retrievePets(customerID: string) {
+    const body = { customerID };
+    return this.http.post(`${this.apiURL}/retrieve-pets`, body);
+  }
 }

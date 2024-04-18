@@ -1,0 +1,25 @@
+<h1 class="page-title">Your Pets</h1>
+<div class="pets-container">
+  <mat-card class="pet-card" *ngFor="let pet of pets">
+    <div class="pet-content">
+      <div class="pet-image-container">
+        <img
+          class="pet-image"
+          src="../../../../../assets/images/blank-picture.webp"
+          alt="{{ pet.petName }}"
+        />
+      </div>
+      <div class="pet-details">
+        <mat-card-header>
+          <mat-card-title class="pet-name">{{ pet.petName }}</mat-card-title>
+          <mat-card-subtitle class="pet-type">{{
+            pet.petType
+          }}</mat-card-subtitle>
+        </mat-card-header>
+        <p class="pet-detail">Breed: {{ pet.petBreed }}</p>
+        <p class="pet-detail">Age: {{ pet.petAge }}</p>
+        <p class="pet-detail">Gender: {{ pet.petGender }}</p>
+      </div>
+    </div>
+  </mat-card>
+</div>

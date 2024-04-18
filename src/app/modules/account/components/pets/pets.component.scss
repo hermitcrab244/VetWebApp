@@ -1,0 +1,58 @@
+.page-title {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pets-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pet-card {
+  width: 300px;
+  margin: 0 10px 20px 10px;
+}
+
+.pet-content {
+  display: flex;
+  align-items: center;
+}
+
+.pet-image-container {
+  flex: 0 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.pet-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.pet-details {
+  flex: 1;
+}
+
+.pet-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.pet-type {
+  font-size: 16px;
+}
+
+.pet-detail {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+

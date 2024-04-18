@@ -1,23 +1,60 @@
-<div id="login-form" (click)="stopPropagation($event)">
-  <div class="form-field">
-    <mat-label for="email-field">Email</mat-label>
-    <mat-form-field id="email-field">
-      <input matInput type="email" required />
-    </mat-form-field>
-  </div>
+<div
+  *ngIf="!isLoggedIn; else loggedInContent"
+  id="login-form"
+  (click)="stopPropagation($event)"
+  class="login-container"
+>
+  <form [formGroup]="loginForm" class="login-form">
+    <div class="form-field">
+      <mat-label for="email-field">Email</mat-label>
+      <mat-form-field id="email-field">
+        <input matInput type="email" formControlName="email" required />
+      </mat-form-field>
+    </div>
 
-  <div class="form-field">
-    <mat-label for="password-field">Password</mat-label>
-    <mat-form-field id="password-field">
-      <input matInput type="password" required />
-    </mat-form-field>
-  </div>
+    <div class="form-field">
+      <mat-label for="password-field">Password</mat-label>
+      <mat-form-field id="password-field">
+        <input matInput type="password" formControlName="password" required />
+      </mat-form-field>
+    </div>
 
-  <div class="form-field">
-    <p>Dont have an account? <a routerLink="/registration">Click here</a></p>
-  </div>
+    <div class="form-field">
+      <p>Dont have an account? <a routerLink="/registration">Click here</a></p>
+    </div>
 
-  <div class="form-field">
-    <button mat-raised-button>Login</button>
-  </div>
+    <div class="form-field">
+      <button mat-raised-button class="login-button" (click)="login()">
+        Login
+      </button>
+    </div>
+  </form>
 </div>
+
+<ng-template #loggedInContent>
+  <div class="account-container">
+    <p class="welcome-message">Hi {{ userName }}</p>
+    <nav class="navigation">
+      <ul>
+        <li>
+          <a [routerLink]="['/account']" routerLinkActive="active-link"
+            >Account</a
+          >
+        </li>
+        <li>
+          <a [routerLink]="['/pets']" routerLinkActive="active-link">My Pets</a>
+        </li>
+        <li>
+          <a [routerLink]="['/book']" routerLinkActive="active-link"
+            >Book a Playdate</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="logout-button-container">
+    <button mat-raised-button class="logout-button" (click)="logout()">
+      Logout
+    </button>
+  </div>
+</ng-template>

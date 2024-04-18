@@ -106,7 +106,64 @@ app.post("/registration-pet", (req, res) => {
 });
 
 //Creates end point user login
-app.post("/login", (req, res) => {});
+app.post("/login", (req, res) => {
+  const { email, password } = req.body;
+
+  const insertQuery =
+    "SELECT * FROM customers WHERE email = ? AND password = ?";
+  db.query(insertQuery, [email, password], (err, results) => {
+    if (err) {
+      res.status(500).json({ message: "Login Error" });
+    } else {
+      if (results.length === 1) {
+        const user = results[0];
+        const {
+          customer_id,
+          first_name,
+          last_name,
+          phone,
+          email,
+          suburb,
+          postcode,
+          password,
+        } = user;
+
+        res.status(200).json({
+          message: "Login Successful",
+          user: {
+            customer_id,
+            first_name,
+            last_name,
+            phone,
+            email,
+            suburb,
+            postcode,
+            password,
+          },
+        });
+      } else {
+        res.status(401).json({ message: "Invalid username or password" });
+      }
+    }
+  });
+});
+
+app.post("/retrieve-pets", (req, res) => {
+  const { customerID } = req.body;
+
+  const insertQuery = "SELECT * FROM pets WHERE customer_id = ?";
+  db.query(insertQuery, [customerID], (err, results) => {
+    if (err) {
+      res.status(500).json({ message: "Error retriving pets list" });
+    } else {
+      if (results.length > 0) {
+        res.status(200).json({ pets: results });
+      } else {
+        res.status(404).json({ message: "No pets found" });
+      }
+    }
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

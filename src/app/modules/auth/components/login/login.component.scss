@@ -1,11 +1,15 @@
 #login-form {
     display: flex;
     flex-direction: column;
+    align-items: center; /* Center the form horizontally */
+    padding: 20px;
 }
 
 .form-field {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    margin-bottom: 15px;
 }
 
 mat-form-field {
@@ -22,5 +26,48 @@ input {
 
 button {
     width: 60%;
+    margin: 10px auto;
+}
 
+.account-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.welcome-message {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.navigation ul {
+    list-style: none;
+    padding: 0;
+}
+
+.navigation ul li {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.navigation ul li:last-child {
+    margin-right: 0;
+}
+
+.navigation ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.navigation ul li a:hover {
+    text-decoration: underline;
+}
+
+.logout-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.logout-button {
+    background-color: #dc3545;
+    color: white;
 }

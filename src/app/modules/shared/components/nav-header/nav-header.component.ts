@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SettingsService } from 'src/app/core/services/gameService/settings.service';
+import { SettingsService } from 'src/app/core/services/dataService/settings.service';
 
 @Component({
   selector: 'app-nav-header',
