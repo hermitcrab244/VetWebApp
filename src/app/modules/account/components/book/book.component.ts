@@ -14,6 +14,7 @@ export class BookComponent implements OnInit {
   selectedGender: string | null = null;
   selectedAge: number | null = null;
   selectedDogsCount: number = 0;
+  DogSelected: boolean = false;
 
   constructor(private api: APIService) {}
 
@@ -58,5 +59,6 @@ export class BookComponent implements OnInit {
 
   updateSelectedDogsCount() {
     this.selectedDogsCount = this.dogs.filter((dog) => dog.selected).length;
+    this.DogSelected = this.selectedDogsCount > 0;
   }
 }
