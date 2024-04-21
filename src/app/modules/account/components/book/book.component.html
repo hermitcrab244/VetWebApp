@@ -20,10 +20,19 @@
   <button class="primary" type="button" (click)="filterDogs()">Search</button>
 </div>
 
+<div class="selected-dogs-count">
+  <p>{{ selectedDogsCount }} dogs selected</p>
+</div>
+
 <div class="dogs-container">
   <ng-container *ngIf="filteredDogs.length > 0; else noResults">
     <mat-card class="dog-card" *ngFor="let dog of filteredDogs">
       <div class="dog-content">
+        <mat-checkbox
+          class="dog-checkbox"
+          [(ngModel)]="dog.selected"
+          (change)="updateSelectedDogsCount()"
+        ></mat-checkbox>
         <div class="dog-image-container">
           <img
             class="dog-image"

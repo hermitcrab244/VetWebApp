@@ -20,6 +20,7 @@ export class SettingsService implements OnDestroy {
   private fontSizeSubject = new BehaviorSubject<any>('default');
   private customerDataSubject = new BehaviorSubject<any>(null);
   private petsDataSubject = new BehaviorSubject<any>(null);
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
 
   setFontSize(data: string) {
     this.fontSizeSubject.next(data);
@@ -48,5 +49,13 @@ export class SettingsService implements OnDestroy {
 
   clearUserData() {
     this.user = null;
+  }
+
+  setIsLoggedIn(value: boolean) {
+    this.isLoggedInSubject.next(value);
+  }
+
+  getIsLoggedIn() {
+    return this.isLoggedInSubject.asObservable();
   }
 }

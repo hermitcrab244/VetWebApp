@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
           this.isLoggedIn = true;
           this.settingService.customerID = response.user.customer_id;
           this.userName = response.user.first_name;
+          this.settingService.setIsLoggedIn(true);
         },
         (error) => {
           console.log('Error: ', error);
@@ -55,6 +56,7 @@ export class LoginComponent implements OnInit {
   }
 
   logout() {
+    this.settingService.setIsLoggedIn(false);
     this.settingService.clearUserData();
     this.loginForm.reset();
     this.isLoggedIn = false;

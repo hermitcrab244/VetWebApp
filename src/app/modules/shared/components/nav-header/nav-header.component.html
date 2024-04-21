@@ -18,6 +18,27 @@
 
       <span id="spacer"></span>
 
+      <button
+        mat-icon-button
+        id="btn"
+        *ngIf="isLoggedIn"
+        [matMenuTriggerFor]="notification"
+      >
+        <mat-icon id="icon">notifications</mat-icon>
+        <mat-badge
+          [matBadge]="1"
+          matBadgeSize="small"
+          matBadgePosition="above after"
+          matBadgeColor="accent"
+        ></mat-badge>
+      </button>
+
+      <div>
+        <mat-menu #notification="matMenu"></mat-menu>
+      </div>
+
+      <span id="btn-space"></span>
+
       <button mat-icon-button id="btn" [matMenuTriggerFor]="login">
         <mat-icon id="icon">person</mat-icon>
       </button>

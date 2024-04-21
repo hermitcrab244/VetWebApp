@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/core/services/backendService/api.service';
-import { SettingsService } from 'src/app/core/services/dataService/settings.service';
 
 @Component({
   selector: 'app-book',
@@ -14,11 +13,9 @@ export class BookComponent implements OnInit {
   selectedBreed: string | null = null;
   selectedGender: string | null = null;
   selectedAge: number | null = null;
+  selectedDogsCount: number = 0;
 
-  constructor(
-    private api: APIService,
-    private settingService: SettingsService
-  ) {}
+  constructor(private api: APIService) {}
 
   ngOnInit() {
     this.retrieveAllDogsList();
@@ -57,5 +54,9 @@ export class BookComponent implements OnInit {
         (!this.selectedGender || dog.petGender === this.selectedGender) &&
         (!this.selectedAge || dog.petAge === this.selectedAge)
     );
+  }
+
+  updateSelectedDogsCount() {
+    this.selectedDogsCount = this.dogs.filter((dog) => dog.selected).length;
   }
 }
