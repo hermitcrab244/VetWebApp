@@ -148,7 +148,7 @@ app.post("/login", (req, res) => {
   });
 });
 
-app.post("/retrieve-pets", (req, res) => {
+app.post("/retrieve-user-pets", (req, res) => {
   const { customerID } = req.body;
 
   const insertQuery = "SELECT * FROM pets WHERE customer_id = ?";
@@ -161,6 +161,18 @@ app.post("/retrieve-pets", (req, res) => {
       } else {
         res.status(404).json({ message: "No pets found" });
       }
+    }
+  });
+});
+
+app.post("/retrieve-all-dogs", (req, res) => {
+  const { petType } = req.body;
+  const insertQuery = "SELECT * FROM pets WHERE pet_type = ?";
+  db.query(insertQuery, [petType], (err, results) => {
+    if (err) {
+      res.status(500).json({ message: "Error retrieving dogs" });
+    } else {
+      res.status(200).json({ dogs: results });
     }
   });
 });

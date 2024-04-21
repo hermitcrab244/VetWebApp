@@ -1,0 +1,80 @@
+.page-title {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .dogs-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .dog-card {
+    width: 300px;
+    margin: 0 10px 20px 10px;
+  }
+
+  .dog-content {
+    display: flex;
+    align-items: center;
+  }
+
+  .dog-image-container {
+    flex: 0 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .dog-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .dog-details {
+    flex: 1;
+  }
+
+  .dog-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 0;
+  }
+
+  .dog-type {
+    font-size: 16px;
+  }
+
+  .dog-detail {
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+
+  .filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .filters label {
+    margin-right: 10px;
+  }
+
+  .filters input,
+  .filters select {
+    margin-right: 10px;
+    padding: 5px;
+  }
+
+  .filters button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }

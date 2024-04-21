@@ -57,6 +57,11 @@ export class APIService {
 
   retrievePets(customerID: string) {
     const body = { customerID };
-    return this.http.post(`${this.apiURL}/retrieve-pets`, body);
+    return this.http.post(`${this.apiURL}/retrieve-user-pets`, body);
+  }
+
+  retrieveDogsList(petType: string) {
+    const body = { petType };
+    return this.http.post(`${this.apiURL}/retrieve-all-dogs`, body);
   }
 }

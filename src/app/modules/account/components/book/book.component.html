@@ -1,1 +1,48 @@
-<p>book works!</p>
+<h1 class="page-title">Book A Doggy Play Date</h1>
+
+<div class="filters">
+  <label for="name">Dog Name:</label>
+  <input type="text" id="name" [(ngModel)]="selectedName" />
+
+  <label for="breed">Breed:</label>
+  <input type="text" id="breed" [(ngModel)]="selectedBreed" />
+
+  <label for="gender">Gender:</label>
+  <select id="gender" [(ngModel)]="selectedGender">
+    <option value="">All</option>
+    <option value="M">Male</option>
+    <option value="F">Female</option>
+  </select>
+
+  <label for="age">Age:</label>
+  <input type="number" id="age" [(ngModel)]="selectedAge" />
+
+  <button class="primary" type="button" (click)="filterDogs()">Search</button>
+</div>
+
+<div class="dogs-container">
+  <ng-container *ngIf="filteredDogs.length > 0; else noResults">
+    <mat-card class="dog-card" *ngFor="let dog of filteredDogs">
+      <div class="dog-content">
+        <div class="dog-image-container">
+          <img
+            class="dog-image"
+            src="../../../../../assets/images/blank-picture.webp"
+            alt="{{ dog.petName }}"
+          />
+        </div>
+        <div class="dog-details">
+          <mat-card-header>
+            <mat-card-title class="dog-name">{{ dog.petName }}</mat-card-title>
+          </mat-card-header>
+          <p class="dog-detail">Breed: {{ dog.petBreed }}</p>
+          <p class="dog-detail">Age: {{ dog.petAge }}</p>
+          <p class="dog-detail">Gender: {{ dog.petGender }}</p>
+        </div>
+      </div>
+    </mat-card>
+  </ng-container>
+  <ng-template #noResults>
+    <p>No dogs found.</p>
+  </ng-template>
+</div>
