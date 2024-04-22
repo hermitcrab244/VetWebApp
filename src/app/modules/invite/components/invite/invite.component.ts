@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { SettingsService } from 'src/app/core/services/dataService/settings.service';
+import { APIService } from 'src/app/core/services/backendService/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -14,10 +15,12 @@ export class InviteComponent implements OnInit {
   selectedTime: string = '';
   invitationCode!: string;
   customerID!: string;
+  ownerIDs!: string[];
 
   constructor(
     private formBuilder: FormBuilder,
     private settingsService: SettingsService,
+    private api: APIService,
     @Inject(MAT_DIALOG_DATA) private data: any
   ) {
     this.generateTimeOptions();
@@ -26,7 +29,7 @@ export class InviteComponent implements OnInit {
   ngOnInit() {
     this.customerID = this.settingsService.customerID;
     this.invitationCode = `${this.customerID}_${Date.now()}`;
-
+    this.ownerIDs = this.settingsService.ownerIDs;
     this.invitationForm = this.formBuilder.group({
       date: ['', Validators.required],
       time: ['', Validators.required],
@@ -49,12 +52,34 @@ export class InviteComponent implements OnInit {
 
   sendInvite() {
     if (this.invitationForm.valid) {
-      const formData = this.invitationForm.value;
-      console.log('Sending invitation with form data:', formData);
-      console.log('Sender ID:', this.customerID);
-      console.log('Invitation code:', this.invitationCode);
-    } else {
-      console.log('Form is invalid. Cannot send invitation.');
+      const invitationCode = this.invitationCode;
+      const senderID = this.customerID;
+      const receiverIDs = this.ownerIDs;
+      const date = this.invitationForm.get('date')!.value.toDateString();
+      const time = this.invitationForm.get('time')!.value;
+      const message = this.invitationForm.get('message')!.value || null;
+      const status = 'Pending';
+
+      receiverIDs.forEach((receiverID) => {
+        this.api
+          .sendInvite(
+            invitationCode,
+            senderID,
+            receiverID,
+            date,
+            time,
+            message,
+            status
+          )
+          .subscribe(
+            (response) => {
+              console.log(response.message);
+            },
+            (error) => {
+              console.log('Error: ', error);
+            }
+          );
+      });
     }
   }
 }

@@ -64,4 +64,26 @@ export class APIService {
     const body = { petType };
     return this.http.post(`${this.apiURL}/retrieve-all-dogs`, body);
   }
+
+  sendInvite(
+    invitationCode: string,
+    senderID: string,
+    receiverID: string,
+    date: string,
+    time: string,
+    message: string,
+    status: string
+  ): Observable<any> {
+    const body = {
+      invitationCode,
+      senderID,
+      receiverID,
+      date,
+      time,
+      message,
+      status,
+    };
+
+    return this.http.post(`${this.apiURL}/send-invitation`, body);
+  }
 }

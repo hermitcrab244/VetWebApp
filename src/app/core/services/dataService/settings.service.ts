@@ -9,6 +9,7 @@ export class SettingsService implements OnDestroy {
   user: any;
   customerID!: string;
   pets: any;
+  ownerIDs!: string[];
 
   constructor() {}
 

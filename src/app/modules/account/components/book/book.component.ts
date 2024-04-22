@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { APIService } from 'src/app/core/services/backendService/api.service';
+import { SettingsService } from 'src/app/core/services/dataService/settings.service';
 import { InviteComponent } from 'src/app/modules/invite/components/invite/invite.component';
 
 @Component({
@@ -18,7 +19,11 @@ export class BookComponent implements OnInit {
   selectedDogsCount: number = 0;
   DogSelected: boolean = false;
 
-  constructor(private api: APIService, private dialog: MatDialog) {}
+  constructor(
+    private api: APIService,
+    private dialog: MatDialog,
+    private settingsService: SettingsService
+  ) {}
 
   ngOnInit() {
     this.retrieveAllDogsList();
@@ -37,6 +42,7 @@ export class BookComponent implements OnInit {
           petGender: dog.pet_sex,
         }));
         this.filteredDogs = this.dogs;
+
         console.log(this.dogs);
       } else {
         console.log('Response does not contain an array of pets:', response);
@@ -66,6 +72,11 @@ export class BookComponent implements OnInit {
   }
 
   openInviteDialog() {
+    const selectedDogs = this.filteredDogs.filter((dog) => dog.selected);
+    const ownerIDs = selectedDogs.map((dog) => dog.ownerID);
+
+    this.settingsService.ownerIDs = ownerIDs;
+    console.log(ownerIDs);
     const dialogRef = this.dialog.open(InviteComponent, {
       width: '500px',
     });

@@ -177,6 +177,26 @@ app.post("/retrieve-all-dogs", (req, res) => {
   });
 });
 
+app.post("/send-invitation", (req, res) => {
+  const { invitationCode, senderID, receiverID, date, time, message, status } =
+    req.body;
+
+  const insertQuery = `INSERT INTO invitations (invitation_code, sender_id, receiver_id, date, time, message, status) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+  db.query(
+    insertQuery,
+    [invitationCode, senderID, receiverID, date, time, message, status],
+    (err, result) => {
+      if (err) {
+        res.status(500).json({ message: "Invitation Failed" });
+      } else {
+        res.status(200).json({
+          message: "Registration successful",
+        });
+      }
+    }
+  );
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
