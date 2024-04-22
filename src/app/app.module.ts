@@ -8,7 +8,9 @@ import { SharedModule } from './modules/shared/shared.module';
 import { MainModule } from './modules/main/main.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { AccountModule } from './modules/account/account.module';
+import { InviteModule } from './modules/invite/invite.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     AuthModule,
     HttpClientModule,
     AccountModule,
+    InviteModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

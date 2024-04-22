@@ -1,0 +1,39 @@
+<div class="invitation-container">
+  <h2>Send Invitation</h2>
+  <form [formGroup]="invitationForm" (ngSubmit)="sendInvite()">
+    <div class="input-container">
+      <mat-form-field class="datepicker">
+        <input
+          matInput
+          [matDatepicker]="picker"
+          placeholder="Choose a date"
+          formControlName="date"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div class="timepicker">
+        <label for="time">Choose a time: </label>
+        <select id="time" formControlName="time">
+          <option *ngFor="let time of times" [value]="time">{{ time }}</option>
+        </select>
+      </div>
+    </div>
+
+    <mat-form-field class="message-input">
+      <textarea
+        matInput
+        rows="5"
+        placeholder="Enter your message"
+        formControlName="message"
+      ></textarea>
+    </mat-form-field>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit">
+        Send Invite
+      </button>
+    </div>
+  </form>
+</div>

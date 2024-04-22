@@ -12,6 +12,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [],
@@ -29,6 +31,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSelectModule,
     MatBadgeModule,
     MatCheckboxModule,
+    MatDialogModule,
+    MatDatepickerModule,
   ],
   exports: [
     MatButtonModule,
@@ -43,6 +47,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSelectModule,
     MatBadgeModule,
     MatCheckboxModule,
+    MatDialogModule,
+    MatDatepickerModule,
   ],
 })
 export class MaterialModule {}

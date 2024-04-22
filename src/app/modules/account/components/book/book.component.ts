@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { APIService } from 'src/app/core/services/backendService/api.service';
+import { InviteComponent } from 'src/app/modules/invite/components/invite/invite.component';
 
 @Component({
   selector: 'app-book',
@@ -16,7 +18,7 @@ export class BookComponent implements OnInit {
   selectedDogsCount: number = 0;
   DogSelected: boolean = false;
 
-  constructor(private api: APIService) {}
+  constructor(private api: APIService, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.retrieveAllDogsList();
@@ -27,6 +29,7 @@ export class BookComponent implements OnInit {
     this.api.retrieveDogsList(petType).subscribe((response: any) => {
       if (response) {
         this.dogs = response.dogs.map((dog: any) => ({
+          ownerID: dog.customer_id,
           petName: dog.pet_name,
           petType: dog.pet_type,
           petBreed: dog.pet_breed,
@@ -60,5 +63,14 @@ export class BookComponent implements OnInit {
   updateSelectedDogsCount() {
     this.selectedDogsCount = this.dogs.filter((dog) => dog.selected).length;
     this.DogSelected = this.selectedDogsCount > 0;
+  }
+
+  openInviteDialog() {
+    const dialogRef = this.dialog.open(InviteComponent, {
+      width: '500px',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
   }
 }

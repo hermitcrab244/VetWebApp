@@ -1,0 +1,25 @@
+.invitation-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Ensure all items stretch to full width */
+    padding: 20px; /* Add padding around the container */
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Adjust spacing between date and time inputs */
+  }
+
+  .timepicker {
+    margin-left: 20px; /* Adjust spacing between date and time inputs */
+  }
+
+  .message-input {
+    width: 100%; /* Make message input span full width */
+    margin-bottom: 20px; /* Adjust spacing between message input and button */
+  }
+
+  .button-container {
+    align-self: flex-end;
+  }
