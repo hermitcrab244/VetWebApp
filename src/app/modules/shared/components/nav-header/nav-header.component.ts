@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { SettingsService } from 'src/app/core/services/dataService/settings.service';
 
@@ -7,10 +7,11 @@ import { SettingsService } from 'src/app/core/services/dataService/settings.serv
   templateUrl: './nav-header.component.html',
   styleUrls: ['./nav-header.component.scss'],
 })
-export class NavHeaderComponent {
+export class NavHeaderComponent implements OnDestroy {
   fontSizeSelect!: string;
   isLoggedIn: boolean = false;
   private subscription: Subscription;
+  notificationCount: number = 0;
 
   constructor(private settingsService: SettingsService) {
     this.subscription = this.settingsService
@@ -18,6 +19,16 @@ export class NavHeaderComponent {
       .subscribe((isLoggedIn) => {
         this.isLoggedIn = isLoggedIn;
       });
+
+    this.subscription = this.settingsService
+      .getInviteNotifications()
+      .subscribe((invitations) => {
+        this.notificationCount = invitations.length;
+      });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   fontSizeSettings(fontSize: string) {

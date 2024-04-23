@@ -25,16 +25,24 @@
         [matMenuTriggerFor]="notification"
       >
         <mat-icon id="icon">notifications</mat-icon>
-        <mat-badge
-          [matBadge]="1"
-          matBadgeSize="small"
-          matBadgePosition="above after"
-          matBadgeColor="accent"
-        ></mat-badge>
+        <ng-container *ngIf="notificationCount > 0">
+          <mat-badge
+            [matBadge]="notificationCount"
+            matBadgeSize="small"
+            matBadgePosition="above after"
+            matBadgeColor="accent"
+          ></mat-badge>
+        </ng-container>
       </button>
 
       <div>
-        <mat-menu #notification="matMenu"></mat-menu>
+        <mat-menu #notification="matMenu">
+          <ng-container *ngIf="notificationCount > 0; else noNotifications">
+          </ng-container>
+          <ng-template #noNotifications>
+            <button mat-menu-item disabled>No notifications</button>
+          </ng-template>
+        </mat-menu>
       </div>
 
       <span id="btn-space"></span>

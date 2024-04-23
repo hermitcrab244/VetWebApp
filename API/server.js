@@ -197,6 +197,23 @@ app.post("/send-invitation", (req, res) => {
   );
 });
 
+app.post("/check-invites", (req, res) => {
+  const { customerID } = req.body;
+
+  const insertQuery = `SELECT * FROM invitations WHERE receiver_id = ?`;
+  db.query(insertQuery, [customerID], (err, results) => {
+    if (err) {
+      res.status(500).json({ message: "Invitation Check Failed" });
+    } else {
+      if (results.length > 0) {
+        res.status(200).json({ invitations: results });
+      } else {
+        res.status(200).json({ invitations: [] });
+      }
+    }
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

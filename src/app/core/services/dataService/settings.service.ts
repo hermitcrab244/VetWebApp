@@ -16,12 +16,14 @@ export class SettingsService implements OnDestroy {
   ngOnDestroy() {
     this.customerDataSubject.complete();
     this.petsDataSubject.complete();
+    this.inviteNotificationsSubject.complete();
   }
 
   private fontSizeSubject = new BehaviorSubject<any>('default');
   private customerDataSubject = new BehaviorSubject<any>(null);
   private petsDataSubject = new BehaviorSubject<any>(null);
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  private inviteNotificationsSubject = new BehaviorSubject<any[]>([]);
 
   setFontSize(data: string) {
     this.fontSizeSubject.next(data);
@@ -58,5 +60,13 @@ export class SettingsService implements OnDestroy {
 
   getIsLoggedIn() {
     return this.isLoggedInSubject.asObservable();
+  }
+
+  setInviteNotifications(invitations: any[]) {
+    this.inviteNotificationsSubject.next(invitations);
+  }
+
+  getInviteNotifications() {
+    return this.inviteNotificationsSubject.asObservable();
   }
 }

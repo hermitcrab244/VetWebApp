@@ -86,4 +86,9 @@ export class APIService {
 
     return this.http.post(`${this.apiURL}/send-invitation`, body);
   }
+
+  checkInvites(customerID: string) {
+    const body = { customerID };
+    return this.http.post(`${this.apiURL}/check-invites`, body);
+  }
 }

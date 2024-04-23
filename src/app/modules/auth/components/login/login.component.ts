@@ -39,12 +39,14 @@ export class LoginComponent implements OnInit {
         (response) => {
           console.log(response.message);
           console.log(response.user);
-
+          const customerID = response.user.customer_id;
           this.settingService.setCustomerData(response.user);
           this.isLoggedIn = true;
           this.settingService.customerID = response.user.customer_id;
           this.userName = response.user.first_name;
           this.settingService.setIsLoggedIn(true);
+
+          this.checkInvites(customerID);
         },
         (error) => {
           console.log('Error: ', error);
@@ -61,5 +63,17 @@ export class LoginComponent implements OnInit {
     this.loginForm.reset();
     this.isLoggedIn = false;
     this.userName = '';
+  }
+
+  checkInvites(customerID: string) {
+    this.api.checkInvites(customerID).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.settingService.setInviteNotifications(response.invitations);
+      },
+      (error) => {
+        console.log('Error: ', error);
+      }
+    );
   }
 }
