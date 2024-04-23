@@ -200,7 +200,7 @@ app.post("/send-invitation", (req, res) => {
 app.post("/check-invites", (req, res) => {
   const { customerID } = req.body;
 
-  const insertQuery = `SELECT * FROM invitations WHERE receiver_id = ?`;
+  const insertQuery = `SELECT * FROM invitations WHERE receiver_id = ? AND status = 'Pending'`;
   db.query(insertQuery, [customerID], (err, results) => {
     if (err) {
       res.status(500).json({ message: "Invitation Check Failed" });
@@ -210,6 +210,21 @@ app.post("/check-invites", (req, res) => {
       } else {
         res.status(200).json({ invitations: [] });
       }
+    }
+  });
+});
+
+app.post("/update-invite-status", (req, res) => {
+  const { invitationID, status } = req.body;
+
+  const insertQuery = `UPDATE invitations SET status = ? WHERE invitation_id = ?`;
+  db.query(insertQuery, [status, invitationID], (err, result) => {
+    if (err) {
+      res.status(500).json({ message: "Failed to update invitation status" });
+    } else {
+      res
+        .status(200)
+        .json({ message: "Invitation status updated successfully" });
     }
   });
 });

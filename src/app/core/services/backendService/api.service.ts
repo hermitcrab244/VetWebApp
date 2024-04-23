@@ -91,4 +91,9 @@ export class APIService {
     const body = { customerID };
     return this.http.post(`${this.apiURL}/check-invites`, body);
   }
+
+  updateInviteStatus(invitationID: string, status: string) {
+    const body = { invitationID, status };
+    return this.http.post(`${this.apiURL}/update-invite-status`, body);
+  }
 }

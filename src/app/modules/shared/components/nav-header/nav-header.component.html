@@ -38,6 +38,13 @@
       <div>
         <mat-menu #notification="matMenu">
           <ng-container *ngIf="notificationCount > 0; else noNotifications">
+            <button
+              mat-menu-item
+              *ngFor="let invitation of invitations"
+              (click)="showInvitationDetails(invitation)"
+            >
+              <span>You have an invitation</span>
+            </button>
           </ng-container>
           <ng-template #noNotifications>
             <button mat-menu-item disabled>No notifications</button>

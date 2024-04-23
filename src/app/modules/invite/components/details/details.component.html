@@ -1,0 +1,13 @@
+<div class="invitation-details">
+  <h2>You've Been Invited to a Puppy Play Date</h2>
+  <button mat-icon-button class="close-button" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <p>Date: {{ invitation.date }}</p>
+  <p>Time: {{ invitation.time }}</p>
+  <p *ngIf="invitation.message">Message: {{ invitation.message }}</p>
+  <div class="button-container">
+    <button mat-button (click)="acceptInvitation()">Accept</button>
+    <button mat-button (click)="declineInvitation()">Decline</button>
+  </div>
+</div>
